@@ -2,6 +2,10 @@ package edu.utexas.warp;
 
 import java.util.Set;
 
+/**
+ * @author William
+ *
+ */
 public abstract class RouteChooser{
 	//TODO: Talk about structure of Network and ODMatrix - can Network class from wrap be used?
 	
