@@ -26,6 +26,8 @@ public abstract class ConvexComboFlowShifter extends FlowShifter{
 	 * of convex combinations, as described by Eq. 12.20 in the 
 	 * Boyles textbook: H := kH* + (1-k)H
 	 * 
+	 * This class doesn't yet handle having multiple lambdas
+	 * 
 	 * @param hStar a mapping between the shortest paths and the amount of OD demand
 	 */
 	@Override

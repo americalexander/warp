@@ -28,5 +28,5 @@ public abstract class FlowShifter{
 	 * @param allOrNothing a mapping from the shortest Path between an origin
 	 * and a destination to the amount (Double) of flow on that destination
 	 */
-	public abstract void shiftFlows(Map<Path,Double> allOrNothing);
+	public abstract void shiftFlows(Map<Path,Double> hStar);
 }

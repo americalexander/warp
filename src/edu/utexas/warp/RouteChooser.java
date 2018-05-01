@@ -19,3 +19,22 @@ public abstract class RouteChooser{
 	public abstract Set<Path> allOrNothing(Network net, ODMatrix od);
 	
 }
+
+class Visit implements Comparable{
+	private Node n;
+	private Double F;
+	Visit(Node n, Double F){
+		this.n=n;
+		this.F=F;
+	}
+	
+	boolean equals(Visit v) {
+		return n.equals(v.n);
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
