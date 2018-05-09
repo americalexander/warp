@@ -1,6 +1,6 @@
 package edu.utexas.warp;
 
-import java.util.Set;
+import java.util.Map;
 
 /**
  * @author William
@@ -16,25 +16,6 @@ public abstract class RouteChooser{
 	// as it may change. 
 	//TODO: But then where does it change?
 	
-	public abstract Set<Path> allOrNothing(Network net, ODMatrix od);
+	public abstract Map<Path, Map<Timestep, Double>> Hstar(Network net, Demand od, TimeHorizon th);
 	
-}
-
-class Visit implements Comparable{
-	private Node n;
-	private Double F;
-	Visit(Node n, Double F){
-		this.n=n;
-		this.F=F;
-	}
-	
-	boolean equals(Visit v) {
-		return n.equals(v.n);
-	}
-
-	@Override
-	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 }

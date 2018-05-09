@@ -1,5 +1,7 @@
 package edu.utexas.warp;
 
-public class Path{
+import java.util.LinkedList;
+
+public class Path extends LinkedList<Link>{
 	
 }
