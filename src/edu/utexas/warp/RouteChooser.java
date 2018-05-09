@@ -16,6 +16,6 @@ public abstract class RouteChooser{
 	// as it may change. 
 	//TODO: But then where does it change?
 	
-	public abstract Map<Path, Map<Timestep, Double>> Hstar(Network net, Demand od, TimeHorizon th);
+	public abstract Map<Path, Map<Double, Double>> Hstar(Network net, Demand od, Double th, Double stepSpan);
 	
 }

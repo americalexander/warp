@@ -8,10 +8,10 @@ import java.util.HashSet;
 public class TDDijkstras extends RouteChooser{
 
 	@Override
-	public Map<Path, Map<Timestep, Double>> Hstar(Network net, Demand od, TimeHorizon th) {
+	public Map<Path, Map<Double, Double>> Hstar(Network net, Demand od, Double th, Double stepSpan) {
 		// TODO Auto-generated method stub
-		Map<Path, Map<Timestep, Double>> hStar = new HashMap<Path, Map<Timestep, Double>>();
-		for (Timestep ts : th) {
+		Map<Path, Map<Double, Double>> hStar = new HashMap<Path, Map<Double, Double>>();
+		for (Double ts = Double.valueOf(0); ts < th; ts += stepSpan) {
 			for (Node origin : od.getOrigins()) {
 				Set<Node> finalized = new HashSet<Node>();
 				Map<Node, Double> lMap = new HashMap<Node, Double>();
