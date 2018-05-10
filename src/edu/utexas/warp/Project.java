@@ -13,10 +13,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import edu.utexas.wrap.Link;
-import edu.utexas.wrap.Network;
-import edu.utexas.wrap.Node;
-import edu.utexas.wrap.Origin;
 
 public class Project{
 
@@ -28,7 +24,6 @@ public class Project{
 	private Map<Node, Map<Node, Double>> staticOD;
 	
 	public Project(File netFile, File demandFile, Integer timeStep, Integer timeHorizon) {
-		//TODO create data structure to hold network and demand before creating objects
 		readNetworkFile(netFile);
 		readDemandFile(demandFile);
 		network = new Network(links, nodes);
@@ -37,15 +32,8 @@ public class Project{
 
 	}
 	
-	public Assigner buildAssigner() {
-		Assigner assign = new Assigner();
-		return assign;
-		//TODO do we want this to return an assigner or set the project's assigner?
-	}
 	
 	public void readNetworkFile(File netFile) throws IOException {
-		//TODO actually read in network file and return the filled data structure
-		//TODO Reference alg. B code to make this method more efficient/not trash
 	
 		// Open the files for reading
 		BufferedReader lf = new BufferedReader(new FileReader(netFile));
@@ -140,6 +128,7 @@ public class Project{
 	
 	public Link createLink(Node tail, Node head, Double capacity, Double length, Double fftime, Double B, Double power, Integer type) {
 		switch (type) {
+			//TODO need to call PointQueueLink constructor properly
 			case 1: return new PointQueueLink(tail, head, capacity, length, fftime, B, power, type);
 			case 100: return new CentroidLink(tail, head, capacity, length, fftime, B, power, type);
 			
