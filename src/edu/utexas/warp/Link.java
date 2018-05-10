@@ -1,5 +1,6 @@
 package edu.utexas.warp;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -141,4 +142,9 @@ public abstract class Link {
 	protected abstract Double congestedPhiInverse(Double v);
 
 	protected abstract Double phi(Double k);
+	
+	public void reset() {
+		upstreamCount = new HashMap<Double,Map<Path,Double>>();
+		downstreamCount = new HashMap<Double,Map<Path,Double>>();
+	}
 }

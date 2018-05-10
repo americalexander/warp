@@ -7,7 +7,9 @@ import java.util.Map;
  *
  */
 public abstract class RouteChooser{
-	//TODO: Talk about structure of Network and ODMatrix - can Network class from wrap be used?
+	protected final Network net;
+	protected final Double th;
+	protected final Double stepSpan;
 	
 	// This class should take in the current state of the network and the OD matrix
 	// to determine the shortest paths from every origin to every destination, as
@@ -15,7 +17,11 @@ public abstract class RouteChooser{
 	// determined is implementation-specific. We don't store the OD matrix locally,
 	// as it may change. 
 	//TODO: But then where does it change?
-	
-	public abstract Map<Path, Map<Double, Double>> Hstar(Network net, Demand od, Double th, Double stepSpan);
+	protected RouteChooser(Network net, Double th, Double stepSpan) {
+		this.net = net;
+		this.th = th;
+		this.stepSpan = stepSpan;
+	}
+	public abstract Map<Path, Map<Double, Double>> Hstar(Demand od);
 	
 }

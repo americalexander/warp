@@ -7,8 +7,12 @@ import java.util.HashSet;
 
 public class TDDijkstras extends RouteChooser{
 
+	protected TDDijkstras(Network net, Double th, Double stepSpan) {
+		super(net, th, stepSpan);
+	}
+
 	@Override
-	public Map<Path, Map<Double, Double>> Hstar(Network net, Demand od, Double th, Double stepSpan) {
+	public Map<Path, Map<Double, Double>> Hstar(Demand od) {
 		// TODO Auto-generated method stub
 		Map<Path, Map<Double, Double>> hStar = new HashMap<Path, Map<Double, Double>>();
 		for (Double ts = Double.valueOf(0); ts < th; ts += stepSpan) {
@@ -36,7 +40,6 @@ public class TDDijkstras extends RouteChooser{
 						if (lMap.getOrDefault(ij.getHead(), Double.MAX_VALUE) > minCost + ij.travelTimeEnter(minCost)) {
 							lMap.put(ij.getHead(), minCost + ij.travelTimeEnter(minCost));
 							backLink.put(ij.getHead(), ij);
-							
 						}
 					}
 				}
@@ -44,5 +47,4 @@ public class TDDijkstras extends RouteChooser{
 		}
 		return hStar;
 	}
-	
 }
