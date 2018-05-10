@@ -8,9 +8,9 @@ import java.util.Map;
  */
 public abstract class FlowShifter{
 	//TODO: Talk about Path type
-	protected Map<Path,Double> currentH;
+	protected Map<Double,Map<Path,Double>> currentH;
 	
-	protected FlowShifter(Map<Path,Double> initialFlows) {
+	protected FlowShifter(Map<Double,Map<Path,Double>> initialFlows) {
 		currentH = initialFlows;
 	}
 	
@@ -28,5 +28,5 @@ public abstract class FlowShifter{
 	 * @param allOrNothing a mapping from the shortest Path between an origin
 	 * and a destination to the amount (Double) of flow on that destination
 	 */
-	public abstract void shiftFlows(Map<Path,Double> hStar);
+	public abstract void shiftFlows(Map<Double,Map<Path,Double>> hStar);
 }

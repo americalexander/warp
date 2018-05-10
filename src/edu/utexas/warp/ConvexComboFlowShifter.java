@@ -11,7 +11,7 @@ import java.util.Set;
 public abstract class ConvexComboFlowShifter extends FlowShifter{
 	protected Double lambda;
 	
-	protected ConvexComboFlowShifter(Map<Path,Double> currentH) {
+	protected ConvexComboFlowShifter(Map<Double, Map<Path, Double>> currentH) {
 		super(currentH);
 	}
 	
@@ -31,26 +31,33 @@ public abstract class ConvexComboFlowShifter extends FlowShifter{
 	 * @param hStar a mapping between the shortest paths and the amount of OD demand
 	 */
 	@Override
-	public void shiftFlows(Map<Path, Double> hStar) {
+	public void shiftFlows(Map<Double, Map<Path, Double>> hStar) {
 		// TODO Auto-generated method stub
 		if (currentH == null) {
 			currentH = hStar;
 			return;
 		}
+		Set<Double> tsteps = hStar.keySet();
+		tsteps.addAll(currentH.keySet());
 		
-		Map<Path, Double> h = new HashMap<Path, Double>();
+		Map<Double,Map<Path,Double>> H = new HashMap<Double, Map<Path,Double>>();
 		
-		Set<Path> active = currentH.keySet();
-		active.addAll(hStar.keySet());
-		
-		updateLambda(lambda);
-		
-		for (Path p : active) {
-			Double newVal = lambda*hStar.getOrDefault(p, 0.0)
-					+ (1-lambda)*currentH.getOrDefault(p, 0.0);
-			h.put(p, newVal);
+		for (Double tstep : tsteps) {
+			Map<Path, Double> h = new HashMap<Path, Double>();
+			
+			Set<Path> active = currentH.get(tstep).keySet();
+			active.addAll(hStar.get(tstep).keySet());
+			
+			updateLambda(lambda);
+			
+			for (Path p : active) {
+				Double newVal = lambda*hStar.getOrDefault(tstep,new HashMap<Path,Double>()).getOrDefault(p, 0.0)
+						+ (1-lambda)*currentH.getOrDefault(tstep,new HashMap<Path,Double>()).getOrDefault(p, 0.0);
+				h.put(p, newVal);
+			}
+			H.put(tstep, h);
 		}
-		currentH = h;
+		currentH = H;
 		
 	}
 	

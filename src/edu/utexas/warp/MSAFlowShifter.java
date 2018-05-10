@@ -9,7 +9,7 @@ import java.util.Map;
 public class MSAFlowShifter extends ConvexComboFlowShifter{
 	private int i;
 	
-	public MSAFlowShifter(Map<Path,Double> currentH) {
+	public MSAFlowShifter(Map<Double, Map<Path, Double>> currentH) {
 		super(currentH);
 		i = 1;
 		lambda = 1.0/i;
