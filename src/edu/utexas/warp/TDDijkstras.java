@@ -33,8 +33,8 @@ public class TDDijkstras extends RouteChooser{
 					if (min == null) break;
 					finalized.add(min);
 					for (Link ij : min.getOutgoing()) {
-						if (lMap.getOrDefault(ij.getHead(), Double.MAX_VALUE) > minCost + ij.TravelTimeEnter(minCost)) {
-							lMap.put(ij.getHead(), minCost + ij.TravelTimeEnter(minCost));
+						if (lMap.getOrDefault(ij.getHead(), Double.MAX_VALUE) > minCost + ij.travelTimeEnter(minCost)) {
+							lMap.put(ij.getHead(), minCost + ij.travelTimeEnter(minCost));
 							backLink.put(ij.getHead(), ij);
 							
 						}
